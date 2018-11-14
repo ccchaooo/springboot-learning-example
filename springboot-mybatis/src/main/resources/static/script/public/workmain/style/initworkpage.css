@@ -1,0 +1,27 @@
+@CHARSET "UTF-8";
+
+/**
+  日期编辑框背景图片
+	*/
+.picker_calendarimg{
+	background:#fff url(Calendar.gif) no-repeat right;
+}
+.picker_calendarimg_g{
+  background:#fff url(Calendar_g.gif) no-repeat right;
+}
+
+.picker_datatimeimg{
+	background:#fff url(DateTimeSelector.gif) no-repeat right;
+}
+
+.picker_datatimeimg_g{
+  background:#fff url(DateTimeSelector_g.gif) no-repeat right;
+}
+
+.picker_timeimg{
+	background:#fff url(TimeSelector.gif) no-repeat right;
+}
+
+.picker_timeimg_g{
+  background:#fff url(TimeSelector_g.gif) no-repeat right;
+}

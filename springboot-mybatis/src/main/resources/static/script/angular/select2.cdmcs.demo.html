@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+    <title>成都市建筑主体网上办事</title>
+
+    <link rel="stylesheet" type="text/css" href="../../script/bootstrap-3.3.7/css/bootstrap.min.css" />
+    <!--[if lt IE 8]>
+    <script type="text/javascript">
+        alert("请使用主流浏览器访问，系统不支持IE8以下版本。");
+    </script>
+    <![endif]-->
+    <!--[if IE 8]>
+    <script type="text/javascript" src="../../script/angular/ie8/example/vendor/es5-shim.min.js"></script>
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="../../script/public/iefix/html5shiv.min.js"></script>
+    <script type="text/javascript" src="../../script/public/iefix/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="../../script/public/jquery/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="../../script/public/jquery/jquery.placeholder.min.js"></script>
+    <script type="text/javascript" src="../../script/angular/ie8/dist/angular.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../../script/select2/css/select2.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../script/select2/css/select2-bootstrap.min.css" />
+    <script type="text/javascript" src="../../script/select2/js/select2.full.min.js"></script>
+    <script type="text/javascript" src="../../script/select2/js/i18n/zh-CN.js"></script>
+
+    <script type="text/javascript" src="../../script/angular/select2.cdmcs.js"></script>
+
+
+    <script type="text/javascript">
+        var app = angular.module("myApp",["select2.cdmcs"]);
+        app.controller("myCtrl",["$scope","$timeout",function($scope,$timeout){
+
+            $timeout(function(){
+                    $scope.dataList =
+                    [{"text":"1111123","value":"1"},
+                        {"text":"2222223","value":"2"},
+                        {"text":"3333333","value":"3"},
+                        {"text":"55555555","value":"5"},
+                    ];
+                $scope.m1 = "1";
+            },2000);
+
+
+//
+            $timeout(function(){
+                $scope.m1 = "2";
+            },500);
+
+            $timeout(function(){
+                $scope.m1 = "5";
+            },1000);
+
+
+//            $scope.dataList =
+//                [{"text":"1111123","value":"1"},
+//                    {"text":"2222223","value":"2"},
+//                    {"text":"3333333","value":"3"},
+//                    {"text":"55555555","value":"5"},
+//                ];
+//            $scope.dataList2 =
+//                [{"text":"1111123-2","value":"1"},
+//                    {"text":"2222223-2","value":"2"},
+//                    {"text":"3333333-2","value":"3"},
+//                    {"text":"55555555-2","value":"5"},
+//                ];
+//            $scope.m1 = ["1","5"];
+//            $scope.m2 = "3";
+
+            $scope.f_change = function(){
+                $scope.m1 = "3";
+            }
+        }]);
+    </script>
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">{{m1}}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 form-inline">
+                <select select2-cdmcs="dataList" class="form-control" ng-model="m1"
+                        style="width:200px;">
+                </select>
+
+                <button ng-click="f_change()">change</button>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

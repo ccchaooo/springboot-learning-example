@@ -1,0 +1,44 @@
+/***************dhtmlxgrid*******************/
+div.gridbox{
+	overflow:hidden;
+	text-align:left;
+}
+
+div.gridbox table.hdr td div.hdrcell{
+	overflow:hidden;
+	font-weight: normal;
+    font-size:12px;
+    font-family:"Microsoft yahei","Kaiti",Arial,Tahoma, sans-serif;	
+	margin:0 auto;
+	padding:0;
+	text-align: center;
+}
+
+div.gridbox table.row20px tr  td, div.gridbox_dhx_web.gridbox table.obj.row20px tr td{
+    /*white-space: nowrap;*/
+    white-space: normal;
+    word-break:break-all;
+    word-wrap: break-word;
+    font-size:12px;
+    padding: 4px 2px;
+    font-family:"宋体","Microsoft yahei","Kaiti";
+}
+
+/***************dhx_sub_row******************************/
+div.gridbox_dhx_web div.dhx_sub_row table.obj.row20px tr.rowselected td{
+	background-color:#ffffce;border-right-color:#ffffce;color:#000;
+}
+
+/**隐藏“展开收起”按钮*/
+.dhxlayout_arrow{
+	display: none;
+}
+
+.dhxlayout_base_dhx_web div.dhx_cell_layout div.dhx_cell_hdr {
+	position: relative;
+	overflow: hidden;
+	font-family:"宋体","Kaiti","Microsoft yahei",Arial,Tahoma,sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	cursor: default;
+}		

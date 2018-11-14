@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+    <title>成都市建筑主体网上办事</title>
+
+    <link rel="stylesheet" type="text/css" href="../../controls/bootstrap/css/bootstrap.min.css" />
+    <!--[if lt IE 8]>
+    <script type="text/javascript">
+        alert("请使用主流浏览器访问，系统不支持IE8以下版本。");
+    </script>
+    <![endif]-->
+    <!--[if IE 8]>
+    <script type="text/javascript" src="../../script/angular/ie8/example/vendor/es5-shim.min.js"></script>
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="../../script/public/iefix/html5shiv.min.js"></script>
+    <script type="text/javascript" src="../../script/public/iefix/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="../../script/public/jquery/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="../../script/public/jquery/jquery.placeholder.min.js"></script>
+    <script type="text/javascript" src="../../script/angular/ie8/dist/angular.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../../script/select2/css/select2.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../script/select2/css/select2-bootstrap.min.css" />
+    <script type="text/javascript" src="../../script/select2/js/select2.full.min.js"></script>
+    <script type="text/javascript" src="../../script/select2/js/i18n/zh-CN.js"></script>
+
+    <script type="text/javascript" src="../../script/angular/select2.cdmcs.2.0.js"></script>
+
+
+    <script type="text/javascript">
+        var app = angular.module("myApp",["select2.cdmcs.2.0"]);
+        app.controller("myCtrl",["$scope",function($scope){
+             $scope.m1 = [{"text":"四川金百利建设工程有限公司","value":"02"},{"text":"四川邦泰建筑劳务有限公司","value":"01"}];
+             $scope.f_change_m1 = function(){
+                 $scope.m1 = [{"text":"四川金百利建设工程有限公司X","value":"0X"}];
+             }
+
+            $scope.m2 = {"text":"四川金百利建设工程有限公司X","value":"0X"};
+            $scope.f_change_m2 = function(){
+                 $scope.m2 = {"text":"四川金百利建设工程有限公司","value":"02"};
+             }
+        }]);
+    </script>
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+    <div class="container" style="padding: 50px;">
+
+        <div class="row">
+            <div class="col-xs-12"><h3>多选 ngModel</h3></div>
+            <div class="col-xs-12"><pre><code>{{m1}}</code></pre></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 form-inline">
+                <select select2-cdmcs-v2 class="form-control" ng-model="m1" style="width:800px;"
+                        data-ajax--url="select2.cdmcs.2.0.ajax.json" data-ajax--cache="true"
+                        data-ajax--method="post" data-ajax--delay="500" multiple
+                >
+                </select>
+
+                <button ng-click="f_change_m1()">change</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12"><h3>单选 ngModel</h3></div>
+            <div class="col-xs-12"><pre><code>{{m2}}</code></pre></div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 form-inline">
+                <select select2-cdmcs-v2 class="form-control" ng-model="m2" style="width:400px;"
+                        data-ajax--url="select2.cdmcs.2.0.ajax.json" data-ajax--cache="true"
+                        data-ajax--method="post" data-ajax--delay="500"
+                >
+                </select>
+
+                <button ng-click="f_change_m2()">change</button>
+
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

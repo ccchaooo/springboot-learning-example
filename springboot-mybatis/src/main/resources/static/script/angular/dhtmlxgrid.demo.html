@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+    <title>成都市建筑主体网上办事-GRID</title>
+
+    <link rel="stylesheet" type="text/css" href="../../script/bootstrap-3.3.7/css/bootstrap.min.css" />
+    <!--[if lt IE 8]>
+    <script type="text/javascript">
+        alert("请使用主流浏览器访问，系统不支持IE8以下版本。");
+    </script>
+    <![endif]-->
+    <!--[if IE 8]>
+    <script type="text/javascript" src="../../script/angular/ie8/example/vendor/es5-shim.min.js"></script>
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="../../script/public/iefix/html5shiv.min.js"></script>
+    <script type="text/javascript" src="../../script/public/iefix/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="../../script/public/jquery/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="../../script/public/jquery/jquery.placeholder.min.js"></script>
+    <script type="text/javascript" src="../../script/angular/ie8/dist/angular.min.js"></script>
+
+    <script type="text/javascript" src="../../script/layer/layer.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../../script/dhtmlx/skins/material/dhtmlx.css" />
+    <script type="text/javascript" src="../../script/dhtmlx/codebase/dhtmlx.js"></script>
+
+    <script type="text/javascript" src="../../script/angular/dhtmlxgrid.custom.validators.js"></script>
+    <script type="text/javascript" src="../../script/angular/dhtmlxgrid.js"></script>
+
+
+    <script type="text/javascript">
+        var app = angular.module("myApp",["DHTMLXGrid"]);
+        app.controller("myCtrl",["$scope","$timeout",function($scope,$timeout){
+            // 删除回调 rId - 删除的rId
+            // callback 删除回调，删除成功之后调用
+            $scope._f_delete =function(rId,callback){
+                console.log([rId,callback]);
+                callback();
+            }
+            $scope.gridData =
+                {"rows":[{"id":1,"data":["93","1111","2222"]},{"id":2,"data":["132","3333","4444"]}]};
+        }]);
+    </script>
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+<div class="container" style="padding: 20px;">
+    <p>
+        基于angular的GRID模块 DEMO
+    </p>
+    <div class="row">
+        <div class="col-xs-8">
+        <form name="myForm">
+
+            <grid
+                    style="width: 100%;height: 150px"
+                    ng-model="gridData"
+                    id="lxpzwhGrid"
+                    imagepath="'/script/dhtmlx/skins/web/imgs/'"
+                    header1='"123,#cspan,#cspan"'
+                    header2='"立项批准文号,文号第二段,文号第三段"'
+                    enable-resizing='"false,false,false"'
+                    colwidths='"*,150,150"'
+                    colalignments='"left,left,left"'
+                    coltypes='"ed,ed,ed"'
+                    colsorting='"str,str,str"'
+                    col-validators='["NotEmpty,ValidInteger","Min4","NotEmpty"]'
+                    delete-function="_f_delete"
+            />
+
+        </form>
+        </div>
+        <div class="col-xs-4">
+            <p>模型数据</p>
+            <code>{{gridData|json}}</code>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 20px;">
+        <div class="col-xs-8">
+            <grid
+                    style="width: 100%;height: 150px"
+                    ng-model="gridData2"
+                    id="lxpzwhGrid2"
+                    imagepath="'/script/dhtmlx/skins/web/imgs/'"
+                    header2='"立项批准文号,文号第二段,文号第三段"'
+                    enable-resizing='"true,false,false"'
+                    colwidths='"*,150,150"'
+                    colalignments='"left,left,left"'
+                    coltypes='"ed,ed,ed"'
+                    colsorting='"str,str,str"' />
+
+        </div>
+        <div class="col-xs-4">
+            <p>模型数据</p>
+            <code>{{gridData2|json}}</code>
+        </div>
+    </div>
+
+    <div>
+        <code>
+            JSP把它指定为绝对路径
+            imagepath="'<%=basePath%>script/dhtmlx/skins/web/imgs/'"
+        </code>
+    </div>
+
+    <div>
+        预定义验证
+        <code>
+            <p>Empty;</p>
+            <p>NotEmpty;</p>
+            <p>ValidAplhaNumeric;</p>
+            <p>ValidBoolean;</p>
+            <p>ValidCurrency;</p>
+            <p>ValidDate - 0000-00-00 to 9999-12-31;</p>
+            <p>ValidDatetime - 0000-00-00 00:00:00 to 9999:12:31 59:59:59;</p>
+            <p>ValidEmail;</p>
+            <p>ValidInteger;</p>
+            <p>ValidIPv4 - 0.0.0.0 to 255.255.255.255;</p>
+            <p>ValidNumeric;</p>
+            <p>ValidSIN - Social Security Number;</p>
+            <p>ValidSSN - Social Insurance Number;</p>
+            <p>ValidTime - 00:00:00 to 59:59:59.</p>
+        </code>
+    </div>
+</div>
+</body>
+</html>

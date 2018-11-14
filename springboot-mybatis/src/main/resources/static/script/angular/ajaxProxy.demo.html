@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+    <title>成都市建筑主体网上办事-ajaxProxy</title>
+
+    <link rel="stylesheet" type="text/css" href="../../script/bootstrap-3.3.7/css/bootstrap.min.css" />
+    <!--[if lt IE 8]>
+    <script type="text/javascript">
+        alert("请使用主流浏览器访问，系统不支持IE8以下版本。");
+    </script>
+    <![endif]-->
+    <!--[if IE 8]>
+    <script type="text/javascript" src="../../script/angular/ie8/example/vendor/es5-shim.min.js"></script>
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="../../script/public/iefix/html5shiv.min.js"></script>
+    <script type="text/javascript" src="../../script/public/iefix/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="../../script/public/jquery/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="../../script/public/jquery/jquery.placeholder.min.js"></script>
+    <script type="text/javascript" src="../../script/angular/ie8/dist/angular.min.js"></script>
+    <script type="text/javascript" src="../../script/angular/ajaxProxy.js" charset="UTF-8"></script>
+
+
+    <script type="text/javascript">
+        var app = angular.module("myApp",["AjaxProxy"]);
+        app.controller("myCtrl",["$scope","ajaxProxy",function($scope,ajaxProxy){
+            $scope.isInvoking  = false;
+
+
+            $scope.f_invoke = function(){
+                $scope.isInvoking  = true;
+                // ajaxProxy.addParm("1","12"); 添加参数
+                ajaxProxy.invokeProc("APPUSER2017.JW2017_XMBJ.PK_XMBJ_CODE_QUERY").then(function(resp){
+                    // console.log(resp);
+                    $scope.resp = resp;
+                    $scope.isInvoking  = false;
+                });
+            };
+
+        }]);
+    </script>
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+<div class="container" style="padding: 20px;">
+    <div class="row">
+        <p>
+            基于angular的ajaxProxy服务 DEMO
+        </p>
+        <p>只能在tomcat启动时测试</p>
+    </div>
+    <div class="row">
+
+        <button class="btn btn-success" ng-click="f_invoke()" ng-disabled="isInvoking">调用AjaxProxy</button>
+
+    </div>
+    <div class="row">
+        <p>服务器返回如下</p>
+        <code>{{resp|json}}</code>
+    </div>
+</div>
+</body>
+</html>

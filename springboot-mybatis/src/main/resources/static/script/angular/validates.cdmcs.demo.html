@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Title</title>
+    <link href="../../controls/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <script type="text/javascript" src="./ie8/dist/angular.min.js"></script>
+    <script type="text/javascript" src="./validates.cdmcs.js"></script>
+    <script type="text/javascript">
+        var app = angular.module("myApp",["validates.cdmcs"]);
+        app.controller("myCtrl",["$scope",function($scope){
+
+        }]);
+    </script>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+
+<div class="container">
+    <form name="myForm" novalidate>
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>表单验证</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label class="control-label">isRequired验证，也可以直接增加（ng-required="true"）属性达到同样的效果
+                        <span ng-class=" myForm._txt1.$valid ? 'glyphicon glyphicon-ok text-success':'glyphicon glyphicon-remove text-warning' "></span>
+                    </label>
+                    <input class="form-control" ng-model="_txt1"  name="_txt1" type="text" validates="isRequired" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label class="control-label">isNumber验证（{"precision":3,"scale":0}）数字总长度为3，小数位0
+                        <span ng-class=" myForm._txt2.$valid ? 'glyphicon glyphicon-ok text-success':'glyphicon glyphicon-remove text-warning' "></span>
+                    </label>
+                    <input class="form-control" ng-model="_txt2"  name="_txt2" type="text" validates="isNumber" data-validates-options='{"precision":3,"scale":0}' />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label class="control-label">isNumber验证（{"precision":5,"scale":2}）数字总长度为5，最长小数位2
+                        <span ng-class=" myForm._txt3.$valid ? 'glyphicon glyphicon-ok text-success':'glyphicon glyphicon-remove text-warning' "></span>
+                    </label>
+                    <input class="form-control" ng-model="_txt3"  name="_txt3" type="text" validates="isNumber" data-validates-options='{"precision":5,"scale":2}' />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label class="control-label">isDate验证（"format":"yyyy-mm-dd"）如果此项是必填只需增加（ng-required="true"）
+                        <span ng-class=" myForm._txt4.$valid ? 'glyphicon glyphicon-ok text-success':'glyphicon glyphicon-remove text-warning' "></span>
+                    </label>
+                    <input  class="form-control" ng-model="_txt4"  name="_txt4" type="text" validates="isDate" data-validates-options='{"format":"yyyy-mm-dd"}' ng-required="true" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label class="control-label">isDate验证（"format":"yyyy-mm-dd HH:mi:ss"）
+                        <span ng-class=" myForm._txt5.$valid ? 'glyphicon glyphicon-ok text-success':'glyphicon glyphicon-remove text-warning' "></span>
+                    </label>
+                    <input  class="form-control" ng-model="_txt5"  name="_txt5" type="text" validates="isDate" data-validates-options='{"format":"yyyy-mm-dd HH:mi:ss"}' />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label class="control-label">isEmail验证
+                        <span ng-class=" myForm._txt6.$valid ? 'glyphicon glyphicon-ok text-success':'glyphicon glyphicon-remove text-warning' "></span>
+                    </label>
+                    <input  class="form-control" ng-model="_txt6"  name="_txt6" type="text" validates="isEmail" />
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label class="control-label">isSFZH验证（{"uppercase":true}自动转大写）
+                        <span ng-class=" myForm._txt7.$valid ? 'glyphicon glyphicon-ok text-success':'glyphicon glyphicon-remove text-warning' "></span>
+                    </label>
+                    <input  class="form-control" ng-model="_txt7"  name="_txt7" type="text" validates="isSFZH"  data-validates-options='{"uppercase":true}' />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label class="control-label">isSHXYDM验证
+                        <span ng-class=" myForm._txt8.$valid ? 'glyphicon glyphicon-ok text-success':'glyphicon glyphicon-remove text-warning' "></span>
+                    </label>
+                    <input  class="form-control" ng-model="_txt8"  name="_txt8" type="text" validates="isSHXYDM" />
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label class="control-label">isZZJGDM验证
+                        <span ng-class=" myForm._txt9.$valid ? 'glyphicon glyphicon-ok text-success':'glyphicon glyphicon-remove text-warning' "></span>
+                    </label>
+                    <input  class="form-control" ng-model="_txt9"  name="_txt9" type="text" validates="isZZJGDM" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4 col-xs-offset-4">
+                <button class="btn btn-default btn-block" ng-if="myForm.$invalid" ng-disabled="myForm.$invalid">整个表单验证通过了才可用</button>
+                <button class="btn btn-success btn-block" ng-if="myForm.$valid">验证已经通过</button>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+    <title>成都市建筑主体网上办事-日历控件</title>
+
+    <link rel="stylesheet" type="text/css" href="../../script/bootstrap-3.3.7/css/bootstrap.min.css" />
+    <!--[if lt IE 8]>
+    <script type="text/javascript">
+        alert("请使用主流浏览器访问，系统不支持IE8以下版本。");
+    </script>
+    <![endif]-->
+    <!--[if IE 8]>
+    <script type="text/javascript" src="../../script/angular/ie8/example/vendor/es5-shim.min.js"></script>
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="../../script/public/iefix/html5shiv.min.js"></script>
+    <script type="text/javascript" src="../../script/public/iefix/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="../../script/public/jquery/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="../../script/public/jquery/jquery.placeholder.min.js"></script>
+    <script type="text/javascript" src="../../script/angular/ie8/dist/angular.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../../script/dhtmlx/skins/skyblue/dhtmlx.css" />
+    <link rel="stylesheet" type="text/css" href="../../script/dhtmlx/skins/material/dhtmlx.css" />
+    <link rel="stylesheet" type="text/css" href="../../script/dhtmlx/skins/web/dhtmlx.css" />
+    <script type="text/javascript" src="../../script/dhtmlx/codebase/dhtmlx.js"></script>
+    <!--日历本地化-->
+    <script type="text/javascript"
+            src="../../script/dhtmlx/codebase/dhtmlXCalendarLocal_zhCN.js"></script>
+
+    <script type="text/javascript" src="../../script/angular/dhtmlCalendar.cdmcs.js"></script>
+
+
+    <script type="text/javascript">
+        var app = angular.module("myApp",["calendar.cdmcs"]);
+        app.controller("myCtrl",["$scope","$timeout",function($scope,$timeout){
+            $scope.f_get_rq = function(xxrq){
+                alert($scope[xxrq]);
+            }
+        }]);
+    </script>
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+<div class="container" style="padding: 20px;">
+    <p>
+        基于angular的日历模块 DEMO
+    </p>
+    <div class="row">
+
+        <div class="col-xs-12 form-inline" style="margin-top: 20px;">
+             <input class="form-control" data-calendar-cdmcs
+                    type="text" ng-model="xxrq1"/>
+            <button ng-click="f_get_rq('xxrq1')">{{xxrq1}}</button>
+        </div>
+
+        <div class="col-xs-12 form-inline" style="margin-top: 20px;">
+             <input class="form-control" data-calendar-cdmcs
+                    data-date-format="%Y-%m-%d %H:%i:%s"
+                    type="text" ng-model="xxrq2"/>
+            <button ng-click="f_get_rq('xxrq2')">{{xxrq2}}</button>
+        </div>
+
+        <div class="col-xs-12 form-inline" style="margin-top: 20px;">
+             <input class="form-control" data-calendar-cdmcs
+                    data-date-format="%Y-%m-%d %H:%i:%s"
+                    data-date-to="2019-10-19 10:52:00"
+                    type="text" ng-model="xxrq3"/>
+            <button ng-click="f_get_rq('xxrq3')">{{xxrq3}}</button>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
