@@ -3,7 +3,7 @@
 
 <mapper namespace="org.spring.springboot.dao.RecordDao">
 <!-- 返回值为List，resultType为List中元素的全类名 -->
-<select id="listAll" resultType="org.spring.springboot.domain.Record">
+<select id="findAllRecord" resultType="org.spring.springboot.domain.Record">
 	select * from realrecord
 </select>
 </mapper>
