@@ -36,7 +36,7 @@ public class CityRestController {
 
     @RequestMapping(value = "/home")
     public String home() {
-        return "/function/home/home";
+        return "welcome home!";
 
     }
 }
