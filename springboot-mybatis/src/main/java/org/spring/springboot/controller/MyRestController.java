@@ -13,10 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
- * Created by bysocket on 07/02/2017.
+ *
+ * @author dengchao
+ * @date 15/11/2018
  */
 @RestController
-public class CityRestController {
+public class MyRestController {
 
     @Autowired
     private CityService cityService;
